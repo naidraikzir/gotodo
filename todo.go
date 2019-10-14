@@ -18,9 +18,8 @@ type Todo struct {
 }
 
 var (
-	db       *sql.DB
-	todos    []Todo
-	isUuidV4 = uuid.Must(uuid.NewV4())
+	db    *sql.DB
+	todos []Todo
 )
 
 func initDB() {
@@ -91,7 +90,7 @@ func todosCreate(w http.ResponseWriter, r *http.Request) {
 	w.Header().Set("Content-Type", "application/json")
 	var todo Todo
 	_ = json.NewDecoder(r.Body).Decode(&todo)
-	id, _ := uuid.NewV4()
+	id := uuid.NewV4()
 	todo.ID = id
 	stmt, _ := db.Prepare("INSERT INTO todos (id, content, completed) VALUES (?, ?, ?)")
 	stmt.Exec(todo.ID, todo.Content, todo.Completed)
