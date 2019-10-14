@@ -2,4 +2,6 @@
 !*.go
 !*.mod
 !*.sum
+!*.vue
+!*.md
 !*.gitignore

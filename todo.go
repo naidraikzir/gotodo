@@ -5,6 +5,7 @@ import (
 	"log"
 	"net/http"
 
+	"github.com/gorilla/handlers"
 	"github.com/gorilla/mux"
 	"github.com/jinzhu/gorm"
 	_ "github.com/jinzhu/gorm/dialects/sqlite"
@@ -36,14 +37,23 @@ func main() {
 
 	// init router
 	r := mux.NewRouter()
+
 	r.HandleFunc("/todos", todosAll).Methods("GET")
 	r.HandleFunc("/todos/{id}", todosGet).Methods("GET")
 	r.HandleFunc("/todos", todosCreate).Methods("POST")
 	r.HandleFunc("/todos/{id}", todosUpdate).Methods("PUT")
 	r.HandleFunc("/todos/{id}", todosDelete).Methods("DELETE")
 
+	allowedMethods := handlers.AllowedMethods([]string{
+		"GET",
+		"POST",
+		"PUT",
+		"DELETE",
+	})
+
 	// start server
-	log.Fatal(http.ListenAndServe(":4321", r))
+	log.Println("Starting app at :4321")
+	log.Fatal(http.ListenAndServe(":4321", handlers.CORS(allowedMethods)(r)))
 }
 
 func todosAll(w http.ResponseWriter, r *http.Request) {
