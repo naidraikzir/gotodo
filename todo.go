@@ -27,7 +27,7 @@ var (
 func initDB() {
 	db, initDBErr = gorm.Open("sqlite3", "./todos.db")
 	if initDBErr != nil {
-		panic("failed to connect to database")
+		log.Panicln(initDBErr)
 	}
 	db.AutoMigrate(&Todo{})
 }
