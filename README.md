@@ -3,6 +3,5 @@
 - Install go
 - Install sqlite
 - Install [@vue/cli-service-global](https://cli.vuejs.org/guide/prototyping.html)
-- `$ go build .`
-- `$ ./todo`
-- `$ vue serve`
+- `$ cd app && go build . && ./todo`
+- `$ vue serve web/App.vue`
