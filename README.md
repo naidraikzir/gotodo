@@ -8,3 +8,4 @@
 
 or, you have docker on your machine:
 - `$ docker-compose up`
+- open `localhost:8080`
