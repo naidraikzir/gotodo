@@ -2,8 +2,5 @@
 !*.go
 !*.mod
 !*.sum
-!*.vue
-!*.md
-!*.yml
 !Dockerfile
 !*.gitignore
