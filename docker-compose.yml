@@ -2,6 +2,11 @@ version: '3.7'
 
 services:
   app:
-    build: .
+    build: ./app
     ports:
       - 4321:4321
+
+  web:
+    build: ./web
+    ports:
+      - 8080:8080
