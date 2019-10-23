@@ -4,5 +4,6 @@
 !*.sum
 !*.vue
 !*.md
+!*.yml
 !Dockerfile
 !*.gitignore
